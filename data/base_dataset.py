@@ -105,11 +105,11 @@ def get_transform(opt, params=None, grayscale=False, method=transforms.Interpola
             transform_list.append(transforms.Lambda(lambda img: __flip(img, params["flip"])))
 
     if opt.isTrain and not opt.no_flip:
-    transform_list += [
-        transforms.RandomVerticalFlip(),
-        transforms.RandomChoice([transforms.RandomRotation((a, a)) for a in (0, 90, 180, 270)]),
-        transforms.ColorJitter(brightness=0.1, contrast=0.1),
-        transforms.RandomApply([transforms.GaussianBlur(3)], p=0.1)]
+            transform_list += [
+            transforms.RandomVerticalFlip(),
+            transforms.RandomChoice([transforms.RandomRotation((a, a)) for a in (0, 90, 180, 270)]),
+            transforms.ColorJitter(brightness=0.1, contrast=0.1),
+            transforms.RandomApply([transforms.GaussianBlur(3)], p=0.1)]
 
     if convert:
         transform_list += [transforms.ToTensor()]
